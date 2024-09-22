@@ -12,7 +12,7 @@ export class CalendarComponent implements OnInit{
   fechas: string[]= this.obtenerFechas()
   horarios: string[]= this.generarHorarios();
   turnos : Turno[]= []
-  turno: Turno= new Turno(0,"","","","","");
+  turno: Turno= new Turno(0,"","","","","",0);
 
   constructor(private tService: TurnosService){}
 
@@ -45,13 +45,13 @@ export class CalendarComponent implements OnInit{
   
     ngOnInit(){
       this.turnos=this.tService.turnos;
-      let turno = new Turno(1,"ale","pepe","9:30",this.fechas[1],"primera");
-      let t = new Turno(2,"delfi","agus","9:30",this.fechas[0],"primera");
-      let u = new Turno(3,"teamo","amor","10:30",this.fechas[1],"primera");
-      let r = new Turno(4,"cacatua","cacuna","9",this.fechas[1],"primera");
-      let n = new Turno(5,"teñeñita","cucu","11",this.fechas[0],"primera");
-      let p = new Turno(6,"diego","luis","14:30",this.fechas[0],"primera");
-      let s = new Turno(7,"king","nigga","10",this.fechas[2],"primera");
+      let turno = new Turno(1,"ale","pepe","9:30",this.fechas[1],"primera",2);
+      let t = new Turno(2,"delfi","agus","9:30",this.fechas[0],"primera",1);
+      let u = new Turno(3,"teamo","amor","10:30",this.fechas[1],"primera",2);
+      let r = new Turno(4,"cacatua","cacuna","9",this.fechas[1],"primera",1);
+      let n = new Turno(5,"teñeñita","cucu","11",this.fechas[0],"primera",2);
+      let p = new Turno(6,"diego","luis","14:30",this.fechas[0],"primera",1);
+      let s = new Turno(7,"king","nigga","10",this.fechas[2],"primera",1);
       this.turnos.push(turno,t,u,r,n,p,s)
     }
 
@@ -62,7 +62,7 @@ export class CalendarComponent implements OnInit{
         return turno;
       }
       else{
-        this.turno=new Turno(0,"","","","","");
+        this.turno=new Turno(0,"","","","","",0);
         this.turno.color='#FFFFFF'
         return null
       }

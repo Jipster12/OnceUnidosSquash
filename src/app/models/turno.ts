@@ -6,14 +6,16 @@ export class Turno {
     hora: string;
     fecha: string;
     color:string;
+    cancha:number;
 
-    constructor(id:number,j1:string,j2:string,horario:string,fecha:string,categoria:string){
+    constructor(id:number,j1:string,j2:string,horario:string,fecha:string,categoria:string,cancha:number){
         this.idTurno=id;
         this.jugador1=j1;
         this.jugador2=j2;
         this.hora=horario;
         this.fecha=fecha;
         this.categoria=categoria;
+        this.cancha=cancha;
         this.color=this.getRandomColor();   
     }
 

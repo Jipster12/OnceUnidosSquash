@@ -1,1 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
+.navbar {
+    position: fixed; /* Fija el navbar en la parte superior */
+    top: 0; /* Alinea el navbar en la parte superior */
+    width: 100%; /* Ocupa todo el ancho de la pantalla */
+    z-index: 1000; /* Mantiene el navbar sobre otros elementos */
+    background-color: #28a745; /* Color de fondo del navbar (ajusta según necesites) */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra para el navbar */
+}
+
+body {
+    padding-top: 60px; /* Ajusta el padding según la altura del navbar */
+}

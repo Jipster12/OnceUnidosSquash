@@ -9,13 +9,15 @@ import { CalendarComponent } from './components/calendar/calendar.component';
 import { LoginComponent } from './components/login/login.component';
 import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { AddTurnoComponent } from './components/add-turno/add-turno.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     CalendarComponent,
-    LoginComponent
+    LoginComponent,
+    AddTurnoComponent
   ],
   imports: [
     BrowserModule,

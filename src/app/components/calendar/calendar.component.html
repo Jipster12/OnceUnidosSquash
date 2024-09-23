@@ -16,16 +16,20 @@
               <ng-container  *ngIf="getTurnoByHora(hora,fecha)!=null && turno.cancha==1;else noexiste" >
                 <div 
                 [ngStyle]="{'background-color': turno.color}"
-                [ngClass]="{'expanded': turno.jugador1 && turno.jugador2}" 
+                [ngClass]="{'expanded': turno.nombrej1 && turno.nombrej2}" 
                 class="expandable-box">
-                {{turno.jugador1 +" vs "+ turno.jugador2}}
+                {{turno.nombrej1 +" vs "+ turno.nombrej2}}
                 <br>
                 {{turno.categoria}}  
                 </div>
               </ng-container>
               <ng-template #noexiste>
                 <div class="expandable-box">
-                  <button type="button" class="btn btn-success" style="--bs-btn-padding-y: .05px; --bs-btn-padding-x: 15px; --bs-btn-font-size: 11px;">
+                  <button 
+                    type="button"
+                    class="btn btn-success" 
+                    (click)="toggleAddTurno()"
+                    style="--bs-btn-padding-y: .05px; --bs-btn-padding-x: 15px; --bs-btn-font-size: 11px;">
                     <div style="font-size: 12px;">+</div><p>Agregar <br>Turno</p>
                   </button>
                 </div>
@@ -33,18 +37,25 @@
               <ng-container  *ngIf="getTurnoByHora(hora,fecha)!=null && turno.cancha==2;else noexiste" >
                 <div 
                 [ngStyle]="{'background-color': turno.color}"
-                [ngClass]="{'expanded': turno.jugador1 && turno.jugador2}" 
+                [ngClass]="{'expanded': turno.nombrej1 && turno.nombrej2}" 
                 class="expandable-box">
-                {{turno.jugador1 +" vs "+ turno.jugador2}}<br>{{turno.categoria}}  
+                {{turno.nombrej1 +" vs "+ turno.nombrej2}}<br>{{turno.categoria}}  
                 </div>
               </ng-container>
               <ng-template #noexiste>
                 <div class="expandable-box">
-                  <button type="button" class="btn btn-success" style="--bs-btn-padding-y: .05px; --bs-btn-padding-x: 15px; --bs-btn-font-size: 11px;">
+                  <button 
+                    type="button"
+                    class="btn btn-success" 
+                    (click)="toggleAddTurno()"
+                    style="--bs-btn-padding-y: .05px; --bs-btn-padding-x: 15px; --bs-btn-font-size: 11px;">
                     <div style="font-size: 12px;">+</div><p>Agregar <br>Turno</p>
                   </button>
                 </div>
               </ng-template> 
+                <div *ngIf="addturno==true">
+                  <app-add-turno [fecha]="fecha" [hora]="hora" [cancha]="2"></app-add-turno>
+                </div>
               </div>
             </div>
         </div>

@@ -8,4 +8,8 @@ export class TurnosService {
   turnos: Turno[] = [];
 
   constructor() { }
+
+  agregarTurno(turno:Turno){
+    //apiservice.post(turno)
+  }
 }

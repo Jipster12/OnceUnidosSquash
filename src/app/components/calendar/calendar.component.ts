@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Turno } from 'src/app/models/turno';
 import { TurnosService } from 'src/app/services/turnos.service';
+import { AddTurnoComponent } from '../add-turno/add-turno.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-calendar',
@@ -12,9 +14,10 @@ export class CalendarComponent implements OnInit{
   fechas: string[]= this.obtenerFechas()
   horarios: string[]= this.generarHorarios();
   turnos : Turno[]= []
-  turno: Turno= new Turno(0,"","","","","",0);
+  turno: Turno= new Turno("","","","","","","",0);
+  addturno:boolean=false;
 
-  constructor(private tService: TurnosService){}
+  constructor(private tService: TurnosService,private router:Router){}
 
   obtenerFechas():string[]{
     const hoy: Date = new Date();
@@ -45,13 +48,13 @@ export class CalendarComponent implements OnInit{
   
     ngOnInit(){
       this.turnos=this.tService.turnos;
-      let turno = new Turno(1,"ale","pepe","9:30",this.fechas[1],"primera",2);
-      let t = new Turno(2,"delfi","agus","9:30",this.fechas[0],"primera",1);
-      let u = new Turno(3,"teamo","amor","10:30",this.fechas[1],"primera",2);
-      let r = new Turno(4,"cacatua","cacuna","9",this.fechas[1],"primera",1);
-      let n = new Turno(5,"teñeñita","cucu","11",this.fechas[0],"primera",2);
-      let p = new Turno(6,"diego","luis","14:30",this.fechas[0],"primera",1);
-      let s = new Turno(7,"king","nigga","10",this.fechas[2],"primera",1);
+      let turno = new Turno("ale","pepe","wachin","aldrey","9:30",this.fechas[1],"primera",2);
+      let t = new Turno("delfi","agus","wachin","aldrey","9:30",this.fechas[0],"primera",1);
+      let u = new Turno("teamo","amor","wachin","aldrey","10:30",this.fechas[1],"primera",2);
+      let r = new Turno("cacatua","cacuna","wachin","aldrey","9",this.fechas[1],"primera",1);
+      let n = new Turno("teñeñita","cucu","wachin","aldrey","11",this.fechas[0],"primera",2);
+      let p = new Turno("diego","luis","wachin","aldrey","14:30",this.fechas[0],"primera",1);
+      let s = new Turno("king","nigga","wachin","aldrey","10",this.fechas[2],"primera",1);
       this.turnos.push(turno,t,u,r,n,p,s)
     }
 
@@ -62,7 +65,7 @@ export class CalendarComponent implements OnInit{
         return turno;
       }
       else{
-        this.turno=new Turno(0,"","","","","",0);
+        this.turno=new Turno("","","","","","","",0);
         this.turno.color='#FFFFFF'
         return null
       }
@@ -70,4 +73,8 @@ export class CalendarComponent implements OnInit{
     return turno;
   }
 
+  toggleAddTurno(){
+    console.log("porque no funcas putita");
+    this.addturno=!this.addturno
+  }
 }

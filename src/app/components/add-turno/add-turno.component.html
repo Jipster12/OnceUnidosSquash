@@ -1,0 +1,54 @@
+<div class="container-fluid mt-5 bg-success">
+  <div class="row">
+    <div class="col-md-4 sidebar">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Agregar Turno</h5>
+          <form [formGroup]="turnoForm" (ngSubmit)="OnSubmit()">
+            <div class="form-group">
+              <label for="nombrej1">Nombre del Jugador 1:</label>
+              <input 
+                type="text" 
+                id="nombrej1" 
+                formControlName="nombrej1" 
+                class="form-control">
+            </div>
+            <div class="form-group">
+              <label for="apellidoj1">Apellido del Jugador 1:</label>
+              <input 
+                type="text" 
+                id="apellidoj1" 
+                formControlName="apellidoj1" 
+                class="form-control">
+            </div>
+            <div class="form-group">
+              <label for="nombrej2">Nombre del Jugador 2:</label>
+              <input 
+                type="text" 
+                id="nombrej2" 
+                formControlName="nombrej2" 
+                class="form-control">
+            </div>
+            <div class="form-group">
+              <label for="apellidoj2">Apellido del Jugador 2:</label>
+              <input 
+                type="text" 
+                id="apellidoj2" 
+                formControlName="apellidoj2" 
+                class="form-control">
+            </div>
+            <div class="form-group">
+              <label for="jugador2">Categoria:</label>
+              <input 
+                type="text" 
+                id="categoria" 
+                formControlName="categoria" 
+                class="form-control">
+            </div><br>
+            <button type="submit" class="btn btn-success">Enviar</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

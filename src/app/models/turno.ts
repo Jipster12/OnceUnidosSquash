@@ -1,19 +1,22 @@
+import { Jugador } from "./jugador";
+
 export class Turno {
-    idTurno:number;
-    jugador1:string;
-    jugador2:string;
+    idTurno:number=0;
+    jugador1:Jugador;
+    jugador2:Jugador;
     categoria:string;
     hora: string;
     fecha: string;
     color:string;
+    cancha:number;
 
-    constructor(id:number,j1:string,j2:string,horario:string,fecha:string,categoria:string){
-        this.idTurno=id;
-        this.jugador1=j1;
-        this.jugador2=j2;
+    constructor(jugador1:Jugador,jugador2:Jugador,horario:string,fecha:string,categoria:string,cancha:number){
+        this.jugador1=jugador1;
+        this.jugador2=jugador2;
         this.hora=horario;
         this.fecha=fecha;
         this.categoria=categoria;
+        this.cancha=cancha;
         this.color=this.getRandomColor();   
     }
 

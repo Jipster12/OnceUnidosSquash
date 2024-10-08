@@ -8,4 +8,9 @@ export class TurnosService {
   turnos: Turno[] = [];
 
   constructor() { }
+
+  agregarTurno(turno:Turno){
+    this.turnos.push(turno);
+    //apiservice.post(turno)
+  }
 }

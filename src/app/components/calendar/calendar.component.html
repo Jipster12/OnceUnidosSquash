@@ -11,40 +11,32 @@
       </div>
       <div class="col-12 col-md-10">
         <div class="grid d-flex flex-wrap mt-2">
-            <div *ngFor="let hora of horarios" class="d-flex flex-column align-items-center">
+            <div *ngFor="let hora of horarios"  cdkDrag class="d-flex flex-column align-items-center">
               <div class="time-box"><strong>{{hora}}</strong></div>
-              <ng-container  *ngIf="getTurnoByHora(hora,fecha)!=null;else noexiste" >
+              <ng-container  *ngIf="getTurnoByHora(hora,fecha)!=null && turno.cancha==1;else sinturno" >
                 <div 
                 [ngStyle]="{'background-color': turno.color}"
-                [ngClass]="{'expanded': turno.jugador1 && turno.jugador2}" 
+                [ngClass]="{'expanded': turno.jugador1.nombre && turno.jugador2.nombre}" 
                 class="expandable-box">
-                {{turno.jugador1 +" vs "+ turno.jugador2}}<br>{{turno.categoria}}  
+                {{turno.jugador1.nombre +" vs "+ turno.jugador2.nombre}}
+                <br>
+                {{turno.categoria}}  
                 </div>
               </ng-container>
-              <ng-template #noexiste>
-                <div class="expandable-box">
-                  <button type="button" class="btn btn-success btn-sm">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 400 500">
-                      <path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 144L48 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l144 0 0 144c0 17.7 14.3 32 32 32s32-14.3 32-32l0-144 144 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-144 0 0-144z"/>
-                    </svg><p>Agregar <br>Turno</p>
-                  </button>
+              <ng-template #sinturno>
+                <div class="expandable-box" style="background-color: grey;">
                 </div>
-              </ng-template> 
-              <ng-container  *ngIf="getTurnoByHora(hora,fecha)!=null;else noexiste" >
+              </ng-template>  
+              <ng-container  *ngIf="getTurnoByHora(hora,fecha)!=null && turno.cancha==2;else sinturno2" >
                 <div 
                 [ngStyle]="{'background-color': turno.color}"
-                [ngClass]="{'expanded': turno.jugador1 && turno.jugador2}" 
+                [ngClass]="{'expanded': turno.jugador1.nombre && turno.jugador2.nombre}" 
                 class="expandable-box">
-                  {{turno.jugador1 +" vs "+ turno.jugador2}}<br>{{turno.categoria}}
+                {{turno.jugador1.nombre +" vs "+ turno.jugador2.nombre}}<br>{{turno.categoria}}  
                 </div>
               </ng-container>
-              <ng-template #noexiste>
-                <div class="expandable-box">
-                  <button type="button" class="btn btn-success btn-sm">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 400 500">
-                      <path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 144L48 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l144 0 0 144c0 17.7 14.3 32 32 32s32-14.3 32-32l0-144 144 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-144 0 0-144z"/>
-                    </svg><p>Agregar <br>Turno</p>
-                  </button>
+              <ng-template #sinturno2>
+                <div class="expandable-box" style="background-color: grey;">
                 </div>
               </ng-template> 
               </div>

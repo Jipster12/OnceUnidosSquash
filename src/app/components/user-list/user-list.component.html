@@ -1,0 +1,42 @@
+<div class="container mt-4">
+    <div class="d-flex justify-content-between mb-3">
+      <h3>Listado de Jugadores</h3>
+      <div class="input-group w-25">
+        <input 
+          type="text" 
+          class="form-control" 
+          placeholder="Buscar por nombre..." 
+          [(ngModel)]="searchTerm" 
+          (input)="searchUsers()">
+        <div class="input-group-append">
+          <button class="btn btn-outline-secondary" type="button" (click)="searchUsers()">
+            <i class="fas fa-search"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  
+    <table class="table table-bordered table-hover">
+      <thead class="thead-light">
+        <tr>
+          <th>Nombre</th>
+          <th>Apellido</th>
+          <th>Teléfono</th>
+          <th>Categoría</th>
+          <th>Nivel</th>
+          <th>Descripción</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of filteredUsers| paginate: { itemsPerPage: 10, currentPage: page }">
+          <td>{{ user.nombre }}</td>
+          <td>{{ user.apellido }}</td>
+          <td>{{ user.telefono }}</td>
+          <td>{{ user.categoria }}</td>
+          <td>{{ user.nivel }}</td>
+          <td>{{ user.descripcion }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <pagination-controls (pageChange)="page = $event" previousLabel="Anterior" nextLabel="Siguiente" screenReaderPaginationLabel="Pagination"></pagination-controls>

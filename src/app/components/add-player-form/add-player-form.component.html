@@ -1,0 +1,35 @@
+<form [formGroup]="playerForm" (ngSubmit)="onSubmit()" class="player-form">
+    <h2>Agregar Jugador</h2>
+    
+    <div class="form-group">
+      <label for="nombre">Nombre:</label>
+      <input id="nombre" type="text" formControlName="nombre" required>
+    </div>
+  
+    <div class="form-group">
+      <label for="apellido">Apellido:</label>
+      <input id="apellido" type="text" formControlName="apellido" required>
+    </div>
+  
+    <div class="form-group">
+      <label for="telefono">Teléfono:</label>
+      <input id="telefono" type="tel" formControlName="telefono" required>
+    </div>
+  
+    <div class="form-group">
+      <label for="categoria">Categoría:</label>
+      <input id="categoria" type="text" formControlName="categoria" required>
+    </div>
+  
+    <div class="form-group">
+      <label for="nivel">Nivel:</label>
+      <input id="nivel" type="text" formControlName="nivel" required>
+    </div>
+  
+    <div class="form-group">
+      <label for="descripcion">Descripción:</label>
+      <textarea id="descripcion" formControlName="descripcion"></textarea>
+    </div>
+  
+    <button type="submit" [disabled]="!playerForm.valid">Agregar Jugador</button>
+  </form>

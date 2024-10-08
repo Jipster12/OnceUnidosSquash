@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup,FormControl,Validators } from '@angular/forms';
+import { Jugador } from 'src/app/models/jugador';
 import { Turno } from 'src/app/models/turno';
 import { TurnosService } from 'src/app/services/turnos.service';
 
@@ -33,8 +34,12 @@ export class AddTurnoComponent implements OnInit {
     const nombrej2 = this.turnoForm.get('nombrej2')?.value!;
     const apellidoj2 = this.turnoForm.get('apellidoj2')?.value!;
     const categoria = this.turnoForm.get('categoria')?.value!;
-    let turno = new Turno(nombrej1,apellidoj1,nombrej2,apellidoj2,this.hora,this.fecha,categoria,this.cancha)
+    let jugador1 : Jugador= new Jugador(nombrej1,apellidoj1,categoria);
+    let jugador2 : Jugador= new Jugador(nombrej2,apellidoj2,categoria);
+    let turno = new Turno(jugador1,jugador2,this.hora,this.fecha,categoria,this.cancha)
     this.turnos.agregarTurno(turno)
+    console.log("llego hasta aca");
+    console.log(this.turnos.turnos);
     
   }
 

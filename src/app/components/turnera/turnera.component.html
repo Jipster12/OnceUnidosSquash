@@ -1,0 +1,21 @@
+<div class="container mt-4">
+    <div class="table-responsive">
+      <table class="table table-bordered">
+        <thead class="thead-light">
+          <tr>
+            <th scope="col">Hora</th>
+            <!-- Generar los días dinámicamente con *ngFor -->
+            <th scope="col" *ngFor="let dia of dias">{{ dia }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let horario of horarios">
+            <td>{{ horario }}</td>
+            <!-- Celdas vacías para los días -->
+            <td *ngFor="let dia of dias"></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  

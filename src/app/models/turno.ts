@@ -1,20 +1,18 @@
+import { Jugador } from "./jugador";
+
 export class Turno {
     idTurno:number=0;
-    nombrej1:string;
-    apellidoj1:string;
-    nombrej2:string;
-    apellidoj2:string;
+    jugador1:Jugador;
+    jugador2:Jugador;
     categoria:string;
     hora: string;
     fecha: string;
     color:string;
     cancha:number;
 
-    constructor(nombrej1:string,apellidoj1:string,nombrej2:string,apellidoj2:string,horario:string,fecha:string,categoria:string,cancha:number){
-        this.nombrej1=nombrej1;
-        this.nombrej2=nombrej2;
-        this.apellidoj1=apellidoj1;
-        this.apellidoj2=apellidoj2;
+    constructor(jugador1:Jugador,jugador2:Jugador,horario:string,fecha:string,categoria:string,cancha:number){
+        this.jugador1=jugador1;
+        this.jugador2=jugador2;
         this.hora=horario;
         this.fecha=fecha;
         this.categoria=categoria;

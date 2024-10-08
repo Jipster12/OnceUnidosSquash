@@ -4,7 +4,7 @@
       <div class="card">
         <div class="card-body">
           <h5 class="card-title">Agregar Turno</h5>
-          <form [formGroup]="turnoForm" (ngSubmit)="OnSubmit()">
+          <form [formGroup]="turnoForm">
             <div class="form-group">
               <label for="nombrej1">Nombre del Jugador 1:</label>
               <input 
@@ -45,7 +45,7 @@
                 formControlName="categoria" 
                 class="form-control">
             </div><br>
-            <button type="submit" class="btn btn-success">Enviar</button>
+            <button type="submit" class="btn btn-success" (click)="OnSubmit()">Enviar</button>
           </form>
         </div>
       </div>

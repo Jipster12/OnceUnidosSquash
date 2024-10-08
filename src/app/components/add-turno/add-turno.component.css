@@ -1,7 +1,7 @@
 .sidebar {
   position: fixed;
   top: 70px;
-  right: 0; /* Asegura que esté a la derecha */
+  left: 0; /* Asegura que esté a la derecha */
   height: 100%;
   width: 250px; /* Ajusta según tus necesidades */
   padding: 30px;

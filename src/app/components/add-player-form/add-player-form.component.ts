@@ -25,7 +25,6 @@ export class AddPlayerFormComponent implements OnInit {
   onSubmit() {
     if (this.playerForm.valid) {
       console.log(this.playerForm.value);
-      // Aquí puedes agregar la lógica para enviar los datos del jugador
     }
   }
 }

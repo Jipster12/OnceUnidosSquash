@@ -1,21 +1,64 @@
 <div class="container mt-4">
-    <div class="table-responsive">
-      <table class="table table-bordered">
-        <thead class="thead-light">
-          <tr>
-            <th scope="col">Hora</th>
-            <!-- Generar los días dinámicamente con *ngFor -->
-            <th scope="col" *ngFor="let dia of dias">{{ dia }}</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let horario of horarios">
-            <td>{{ horario }}</td>
-            <!-- Celdas vacías para los días -->
-            <td *ngFor="let dia of dias"></td>
-          </tr>
-        </tbody>
-      </table>
+  <div class="row">
+    <!-- Tabla a la izquierda -->
+    <div class="col-md-8">
+      <div class="table-responsive">
+        <table class="table table-bordered">
+          <thead class="thead-light">
+            <tr>
+              <th scope="col">Hora</th>
+              <!-- Generar los días dinámicamente con *ngFor -->
+              <th scope="col" *ngFor="let dia of dias">{{ dia }}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let horario of horarios; let i = index">
+              <td>{{ horario }}</td>
+              <!-- Mostrar el contenido y color de cada celda -->
+              <td *ngFor="let dia of dias; let j = index" [ngStyle]="{'background-color': coloresTabla[i][j]}">
+                {{ datosTabla[i][j] }}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Formulario a la derecha -->
+    <div class="col-md-4">
+      <h4>Agregar contenido a la tabla</h4>
+      <form (ngSubmit)="onSubmit()">
+        <!-- Seleccionar horario -->
+        <div class="form-group">
+          <label for="horario">Horario</label>
+          <select id="horario" [(ngModel)]="formHorario" name="horario" class="form-control" required>
+            <option *ngFor="let horario of horarios; let i = index" [value]="i">{{ horario }}</option>
+          </select>
+        </div>
+
+        <!-- Seleccionar día -->
+        <div class="form-group">
+          <label for="dia">Día</label>
+          <select id="dia" [(ngModel)]="formDia" name="dia" class="form-control" required>
+            <option *ngFor="let dia of dias; let j = index" [value]="j">{{ dia }}</option>
+          </select>
+        </div>
+
+        <!-- Ingresar contenido -->
+        <div class="form-group">
+          <label for="contenido">Contenido</label>
+          <input id="contenido" [(ngModel)]="formContenido" name="contenido" class="form-control" required>
+        </div>
+
+        <!-- Seleccionar color -->
+        <div class="form-group">
+          <label for="color">Color</label>
+          <input id="color" type="color" [(ngModel)]="formColor" name="color" class="form-control">
+        </div>
+
+        <!-- Botón para enviar el formulario -->
+        <button type="submit" class="btn btn-primary">Agregar a la tabla</button>
+      </form>
     </div>
   </div>
-  
+</div>

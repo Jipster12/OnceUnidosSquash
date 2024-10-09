@@ -6,9 +6,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CalendarComponent } from './components/calendar/calendar.component';
 import { LoginComponent } from './components/login/login.component';
-import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { AddTurnoComponent } from './components/add-turno/add-turno.component';
 import { UserListComponent } from './components/user-list/user-list.component';
 import { TurneraComponent } from './components/turnera/turnera.component';
 import { AddPlayerFormComponent } from './components/add-player-form/add-player-form.component';
@@ -21,7 +20,6 @@ import { DragDropModule } from '@angular/cdk/drag-drop'
     NavbarComponent,
     CalendarComponent,
     LoginComponent,
-    AddTurnoComponent,
     UserListComponent,
     TurneraComponent,
     AddPlayerFormComponent

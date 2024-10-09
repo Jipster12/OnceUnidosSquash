@@ -5,12 +5,28 @@ import { Turno } from '../models/turno';
   providedIn: 'root'
 })
 export class TurnosService {
-  turnos: Turno[] = [];
+  private turnos: Turno[] = [];
 
-  constructor() { }
+  constructor(){}
 
-  agregarTurno(turno:Turno){
-    this.turnos.push(turno);
-    //apiservice.post(turno)
+  getTurnos(): Turno[] {
+    return this.turnos;
   }
+
+  addTurno(turno: Turno): void {
+    this.turnos.push(turno);
+  }
+
+  updateTurno(updatedTurno: Turno): void {
+    const index = this.turnos.findIndex(t => 
+      t.fecha === updatedTurno.fecha && 
+      t.horario === updatedTurno.horario && 
+      t.cancha === updatedTurno.cancha
+    );
+    if (index !== -1) {
+      this.turnos[index] = updatedTurno;
+    }
+  }
+
+  
 }

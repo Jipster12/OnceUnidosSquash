@@ -5,7 +5,7 @@ export class Turno {
     jugador1:Jugador;
     jugador2:Jugador;
     categoria:string;
-    hora: string;
+    horario: string;
     fecha: string;
     color:string;
     cancha:number;
@@ -13,7 +13,7 @@ export class Turno {
     constructor(jugador1:Jugador,jugador2:Jugador,horario:string,fecha:string,categoria:string,cancha:number){
         this.jugador1=jugador1;
         this.jugador2=jugador2;
-        this.hora=horario;
+        this.horario=horario;
         this.fecha=fecha;
         this.categoria=categoria;
         this.cancha=cancha;

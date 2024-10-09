@@ -1,47 +1,87 @@
 <div class="container-fluid">
-    <!-- Componente para la fecha de hoy -->
-    <div *ngFor="let fecha of fechas" class="row mb-4">
-      <div class="col-12 col-md-2">
-        <div class="date-box">
-          <div><strong>Fecha</strong></div>
-          <strong>{{fecha}}</strong>
+  <div class="row">
+    <div class="col-12 col-md-4">
+      <h4>Agregar Turno</h4>
+      <form (ngSubmit)="onSubmitTurno()">
+        <div class="form-group">
+          <label for="fecha">Fecha</label>
+          <select id="fecha" [(ngModel)]="turno.fecha" name="fecha" class="form-control" required>
+            <option *ngFor="let fecha of fechas" [value]="fecha">{{fecha}}</option>
+          </select>
         </div>
-        <div class="date-box"><strong>Cancha 1</strong></div>
-        <div class="date-box"><strong>Cancha 2</strong></div>
-      </div>
-      <div class="col-12 col-md-10">
-        <div class="grid d-flex flex-wrap mt-2">
-            <div *ngFor="let hora of horarios"  cdkDrag class="d-flex flex-column align-items-center">
-              <div class="time-box"><strong>{{hora}}</strong></div>
-              <ng-container  *ngIf="getTurnoByHora(hora,fecha)!=null && turno.cancha==1;else sinturno" >
-                <div 
-                [ngStyle]="{'background-color': turno.color}"
-                [ngClass]="{'expanded': turno.jugador1.nombre && turno.jugador2.nombre}" 
-                class="expandable-box">
-                {{turno.jugador1.nombre +" vs "+ turno.jugador2.nombre}}
+        <div class="form-group">
+          <label for="horario">Horario</label>
+          <select id="horario" [(ngModel)]="turno.horario" name="horario" class="form-control" required>
+            <option *ngFor="let hora of horarios" [value]="hora">{{hora}}</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="cancha">Cancha</label>
+          <select id="cancha" [(ngModel)]="turno.cancha" name="cancha" class="form-control" required>
+            <option [value]="1">Cancha 1</option>
+            <option [value]="2">Cancha 2</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="jugador1">Jugador 1</label>
+          <select id="jugador1" [(ngModel)]="turno.jugador1" name="jugador1" class="form-control" required>
+            <option *ngFor="let jugador of jugadores" [ngValue]="jugador">{{jugador.nombre}}</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="jugador2">Jugador 2</label>
+          <select id="jugador2" [(ngModel)]="turno.jugador2" name="jugador2" class="form-control" required>
+            <option *ngFor="let jugador of jugadores" [ngValue]="jugador">{{jugador.nombre}}</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="categoria">Categoría</label>
+          <input id="categoria" [(ngModel)]="turno.categoria" name="categoria" class="form-control" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Agregar Turno</button>
+      </form>
+    </div>
+    
+    <div class="col-12 col-md-8">
+      <div *ngFor="let fecha of fechas" class="mb-4">
+        <h5>{{fecha}}</h5>
+        <div class="row">
+          <div class="col-6">
+            <h6>Cancha 1</h6>
+            <div cdkDropList
+                 [cdkDropListData]="getTurnosByFechaYCancha(fecha, 1)"
+                 (cdkDropListDropped)="onDrop($event)"
+                 [id]="'list-' + 1"
+                 class="turno-list">
+              <div *ngFor="let turno of getTurnosByFechaYCancha(fecha, 1)"
+                   cdkDrag
+                   class="turno-box"
+                   [style.backgroundColor]="turno.color">
+                {{turno.horario}} - {{turno.jugador1.nombre}} vs {{turno.jugador2.nombre}}
                 <br>
-                {{turno.categoria}}  
-                </div>
-              </ng-container>
-              <ng-template #sinturno>
-                <div class="expandable-box" style="background-color: grey;">
-                </div>
-              </ng-template>  
-              <ng-container  *ngIf="getTurnoByHora(hora,fecha)!=null && turno.cancha==2;else sinturno2" >
-                <div 
-                [ngStyle]="{'background-color': turno.color}"
-                [ngClass]="{'expanded': turno.jugador1.nombre && turno.jugador2.nombre}" 
-                class="expandable-box">
-                {{turno.jugador1.nombre +" vs "+ turno.jugador2.nombre}}<br>{{turno.categoria}}  
-                </div>
-              </ng-container>
-              <ng-template #sinturno2>
-                <div class="expandable-box" style="background-color: grey;">
-                </div>
-              </ng-template> 
+                {{turno.categoria}}
               </div>
             </div>
+          </div>
+          <div class="col-6">
+            <h6>Cancha 2</h6>
+            <div cdkDropList
+                 [cdkDropListData]="getTurnosByFechaYCancha(fecha, 2)"
+                 (cdkDropListDropped)="onDrop($event)"
+                 [id]="'list-' + 2"
+                 class="turno-list">
+              <div *ngFor="let turno of getTurnosByFechaYCancha(fecha, 2)"
+                   cdkDrag
+                   class="turno-box"
+                   [style.backgroundColor]="turno.color">
+                {{turno.horario}} - {{turno.jugador1.nombre}} vs {{turno.jugador2.nombre}}
+                <br>
+                {{turno.categoria}}
+              </div>
+            </div>
+          </div>
         </div>
-      </div> 
+      </div>
     </div>
-  
+  </div>
+</div>

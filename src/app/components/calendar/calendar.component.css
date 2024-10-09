@@ -1,47 +1,46 @@
-.date-box {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 4px;
-    text-align: center;
-    margin-bottom: 5px;
-  }
-  
-  .time-box {
-    background-color: #ffffff;
-    color: black; /* Color del texto */
-    width: 70px;
-    height: 70px;
-    text-align: center;
-    line-height: 70px;
-    border-radius: 4px;
-    margin-bottom: 10px;
-    margin-right: 2px; /* Margen entre horarios */
-    font-size: 15px;
-    font-style: oblique;
-    flex-shrink: 0;
-  }
-  
-  .expandable-box {
-    background-color: #e9ecef;
-    width: 70px;
-    height: 70px;
-    border-radius: 4px;
-    margin-top: 2px;
-  }
-  
-  .expandable-box.expanded {
-    width: 140px ;
-    height: 70px;
-    text-align: center;
-    margin-left: 2px;
-    margin-right: 2px;
-    font-size: 20px;
-  }
+.turno-list {
+  min-height: 60px;
+  border: solid 1px #ccc;
+  background: white;
+  border-radius: 4px;
+  overflow: hidden;
+  display: block;
+}
 
-  .grid {
-    display: flex; /* Alinea los elementos en una fila */
-    flex-wrap: nowrap; /* Evita que los elementos se envuelvan en la siguiente fila */
-    overflow-x: scroll; /* Permite el scroll horizontal si los elementos se salen del contenedor */
-    white-space: nowrap; /* Evita que los elementos se rompan a la siguiente línea */
-    width: max-content; /* Hace que el contenedor se expanda según el contenido */
+.turno-box {
+  padding: 20px 10px;
+  border-bottom: solid 1px #ccc;
+  color: rgba(0, 0, 0, 0.87);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  cursor: move;
+  background: white;
+  font-size: 14px;
+}
+
+.cdk-drag-preview {
+  box-sizing: border-box;
+  border-radius: 4px;
+  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
+              0 8px 10px 1px rgba(0, 0, 0, 0.14),
+              0 3px 14px 2px rgba(0, 0, 0, 0.12);
+}
+
+.cdk-drag-placeholder {
+  opacity: 0;
+}
+
+.cdk-drag-animating {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.turno-box:last-child {
+  border: none;
+}
+
+.turno-list.cdk-drop-list-dragging .turno-box:not(.cdk-drag-placeholder) {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
 }
